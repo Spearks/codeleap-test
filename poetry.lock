@@ -55,12 +55,57 @@ django = ">=3.0"
 pytz = "*"
 
 [[package]]
+name = "drf-yasg"
+version = "1.21.7"
+description = "Automated generation of real Swagger/OpenAPI 2.0 schemas from Django Rest Framework code."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+django = ">=2.2.16"
+djangorestframework = ">=3.10.3"
+inflection = ">=0.3.1"
+packaging = ">=21.0"
+pytz = ">=2021.1"
+pyyaml = ">=5.1"
+uritemplate = ">=3.0.0"
+
+[package.extras]
+coreapi = ["coreapi (>=2.3.3)", "coreschema (>=0.0.4)"]
+validation = ["swagger-spec-validator (>=2.1.0)"]
+
+[[package]]
+name = "inflection"
+version = "0.5.1"
+description = "A port of Ruby on Rails inflector to Python"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
+name = "packaging"
+version = "23.2"
+description = "Core utilities for Python packages"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "pytz"
 version = "2024.1"
 description = "World timezone definitions, modern and historical"
 category = "main"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "pyyaml"
+version = "6.0.1"
+description = "YAML parser and emitter for Python"
+category = "main"
+optional = false
+python-versions = ">=3.6"
 
 [[package]]
 name = "sqlparse"
@@ -91,17 +136,30 @@ category = "main"
 optional = false
 python-versions = ">=2"
 
+[[package]]
+name = "uritemplate"
+version = "4.1.1"
+description = "Implementation of RFC 6570 URI Templates"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "d8653d73960c0d2f9a408c564f5bd8a52d6ba22fb75347b1141633ade5a1969a"
+content-hash = "ffdbf8c6bb888838569883adf052eb7cdef629245328ada61c7ccfbd74242214"
 
 [metadata.files]
 asgiref = []
 django = []
 django-environ = []
 djangorestframework = []
+drf-yasg = []
+inflection = []
+packaging = []
 pytz = []
+pyyaml = []
 sqlparse = []
 typing-extensions = []
 tzdata = []
+uritemplate = []

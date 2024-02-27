@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # External app's (libraries)
-    'rest_framework',
-
+    'rest_framework',   # DRF
+    'drf_yasg',         # Swagger generator
     # Custom app's
     #  - api: API made with Django Rest Framework, simple Crud of careers
     'api'
