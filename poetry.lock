@@ -73,6 +73,23 @@ coreapi = ["coreapi (>=2.3.3)", "coreschema (>=0.0.4)"]
 validation = ["swagger-spec-validator (>=2.1.0)"]
 
 [[package]]
+name = "gunicorn"
+version = "21.2.0"
+description = "WSGI HTTP Server for UNIX"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+packaging = "*"
+
+[package.extras]
+eventlet = ["eventlet (>=0.24.1)"]
+gevent = ["gevent (>=1.4.0)"]
+setproctitle = ["setproctitle"]
+tornado = ["tornado (>=0.2)"]
+
+[[package]]
 name = "inflection"
 version = "0.5.1"
 description = "A port of Ruby on Rails inflector to Python"
@@ -136,7 +153,7 @@ python-versions = ">=3.6"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "881efb2b5d5ca2b3209c2da852a56b64b059c43e303b85045243a6bbe0db1a95"
+content-hash = "7aa90fcdcca45901c4783461433a1ad7772f379166a8a055b32196dc7589ff7b"
 
 [metadata.files]
 asgiref = []
@@ -144,6 +161,7 @@ django = []
 django-environ = []
 djangorestframework = []
 drf-yasg = []
+gunicorn = []
 inflection = []
 packaging = []
 pytz = []

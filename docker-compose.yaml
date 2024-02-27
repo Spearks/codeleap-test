@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: cgr.dev/chainguard/nginx@sha256:bcc6b0d052298112e4644b258de0fa4dc1509e3df8f7c0fba09e8c92987825e7
+    volumes:
+      - ./nginx.codeleap.conf:/etc/nginx/nginx.conf
+    ports:
+      - "8000:8000"
+    networks:
+      - main
+
+  django:
+    build: .
+  
+    networks: 
+      - main
+
+networks:
+  main:

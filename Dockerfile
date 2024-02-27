@@ -27,4 +27,4 @@ COPY --from=base /app /app
 
 ENV PYTHONPATH=/app/.venv/lib/python3.11/site-packages
 
-CMD ["manage.py", "runserver"]
+CMD ["/app/.venv/bin/gunicorn", "careers.wsgi", "-b", "0.0.0.0"]
