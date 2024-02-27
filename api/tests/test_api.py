@@ -4,14 +4,9 @@ from api.serializers import CareersSerializer
 
 from rest_framework import status
 from django.urls import reverse
+import json
 
 class CareersTest(APICase):
-    def setUp(self):
-        self.test_object = Careers.objects.create(
-            username='jonny_doe',
-            title='Lorem',
-            content='lorem ipsum dolor sit amet',
-        )        
     
     def test_get_all_careers(self):
         url = reverse('careers-list')
@@ -35,7 +30,7 @@ class CareersTest(APICase):
             'content' : 'lorem ipsum dolor sit amet2'
         }
         
-        response = self.client.post(content_type='application/json', path=url, data=data)
+        response = self.client.post(content_type='application/json', path=url, data=json.dumps(data))
         
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         
@@ -47,13 +42,16 @@ class CareersTest(APICase):
         url = reverse('careers-detail', args=[self.test_object.id])
 
         data = {
-            'username' : 'jon_doe',
+            'username' : 'foobar',
             'title' : 'I was changed!',
             'content' : 'Im also changed!'
         }
         
-        response = self.client.patch(content_type='application/json', path=url, data=data)
+        response = self.client.patch(content_type='application/json', path=url, data=json.dumps(data))
+        
+        self.test_object.refresh_from_db()
         
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(Careers.objects.all().last().title, data['title'])
-        self.assertEqual(Careers.objects.all().last().content, data['content'])
+        self.assertEqual(self.test_object.username, data['username'])
+        self.assertEqual(self.test_object.title, data['title'])
+        self.assertEqual(self.test_object.content, data['content'])
