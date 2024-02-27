@@ -12,9 +12,19 @@ services:
 
   django:
     build: .
-  
     networks: 
       - main
 
+  postgres:
+    image: cgr.dev/chainguard/postgres@sha256:61d7206d55e60ebc60e881f1cc8f05600c1e1ca89a3535595520d0739404d531
+    environment:
+      POSTGRES_DB: codeleap
+      POSTGRES_USER: codeleap
+      POSTGRES_PASSWORD: codeleap
+    networks: 
+      - main
+    ports:
+      - "5432:5432"
+ 
 networks:
   main:
