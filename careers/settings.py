@@ -89,7 +89,6 @@ WSGI_APPLICATION = 'careers.wsgi.application'
 
 DATABASES = {
     'default': env.db_url('DATABASE_URL')
-    
 }
 
 
