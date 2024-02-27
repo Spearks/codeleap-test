@@ -6,9 +6,6 @@ category = "main"
 optional = false
 python-versions = ">=3.7"
 
-[package.dependencies]
-typing-extensions = {version = ">=4", markers = "python_version < \"3.11\""}
-
 [package.extras]
 tests = ["pytest", "pytest-asyncio", "mypy (>=0.800)"]
 
@@ -121,14 +118,6 @@ doc = ["sphinx"]
 test = ["pytest", "pytest-cov"]
 
 [[package]]
-name = "typing-extensions"
-version = "4.10.0"
-description = "Backported and Experimental Type Hints for Python 3.8+"
-category = "main"
-optional = false
-python-versions = ">=3.8"
-
-[[package]]
 name = "tzdata"
 version = "2024.1"
 description = "Provider of IANA time zone data"
@@ -146,8 +135,8 @@ python-versions = ">=3.6"
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.10"
-content-hash = "ffdbf8c6bb888838569883adf052eb7cdef629245328ada61c7ccfbd74242214"
+python-versions = "^3.11"
+content-hash = "881efb2b5d5ca2b3209c2da852a56b64b059c43e303b85045243a6bbe0db1a95"
 
 [metadata.files]
 asgiref = []
@@ -160,6 +149,5 @@ packaging = []
 pytz = []
 pyyaml = []
 sqlparse = []
-typing-extensions = []
 tzdata = []
 uritemplate = []
