@@ -74,3 +74,12 @@ class CareersTest(APICase):
         
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(self.test_object.user.username, self.user.username)
+    
+    def test_delete_career(self):
+        url = reverse('careers-detail', args=[self.test_object.id])
+
+        response = self.client.delete(url)
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        self.assertFalse(Careers.objects.filter(id=self.test_object.id).exists())
