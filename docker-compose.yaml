@@ -9,10 +9,13 @@ services:
       - "8000:8000"
     networks:
       - main
+    logging:
+      driver: ${LOGGING}
 
   django:
     environment:
-      MIGRATE: 'false'
+      - MIGRATE=${MIGRATE}
+      - TEST=${TEST}
     build: .
     networks: 
       - main
@@ -29,6 +32,9 @@ services:
       - main
     ports:
       - "5432:5432"
+    logging:
+      driver: ${LOGGING}
+
 networks:
   main:
 volumes:

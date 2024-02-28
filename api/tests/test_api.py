@@ -80,6 +80,17 @@ class CareersTest(APICase):
 
         response = self.client.delete(url)
 
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertFalse(Careers.objects.filter(id=self.test_object.id).exists())
+        
+    def test_delete_career_only_for_owner(self):
+        last_obj = Careers.objects.all().last()
+
+        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.second_token}')
+        
+        url = reverse('careers-detail', args=[last_obj.id])
+        
+        response = self.client.delete(content_type='application/json', path=url)
+        
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)

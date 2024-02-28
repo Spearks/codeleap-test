@@ -2,10 +2,11 @@
 
 # Views for the App
 from .models import Careers
-from rest_framework import permissions, viewsets
+from rest_framework import permissions, viewsets, response, status
 
 from api.serializers import CareersSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
+
 #Permission that allows users to create posts only with their username
 class UsernamePermission(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
@@ -25,3 +26,7 @@ class CareersViewSet(viewsets.ModelViewSet):
     def update(self, request, *args, **kwargs):
         kwargs['partial'] = True
         return super().update(request, *args, **kwargs)
+
+    def destroy(self, *args, **kwargs):
+        super().destroy(*args, **kwargs)
+        return response.Response({}, status=status.HTTP_200_OK)
