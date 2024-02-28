@@ -30,8 +30,6 @@ services:
       - data:/var/lib/postgresql/data
     networks: 
       - main
-    ports:
-      - "5432:5432"
     logging:
       driver: ${LOGGING}
 
