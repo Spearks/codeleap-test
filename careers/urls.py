@@ -16,25 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import permissions
-from drf_yasg.views import get_schema_view
-from drf_yasg import openapi
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-schema_view = get_schema_view(
-   openapi.Info(
-      title="Codeleap Careers API",
-      default_version='v1',
-      description="API for CodeLeap Careers",
-      terms_of_service="https://example.com",
-      contact=openapi.Contact(email="otavio.canuto.m@gmail.com"),
-      license=openapi.License(name="AGPL V3"),
-   ),
-   public=True,
-   permission_classes=(permissions.AllowAny,),
-)
+from rest_framework import permissions
+
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 urlpatterns = [
-    path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('admin/', admin.site.urls),
-    path('', include('api.urls'))
+    path('', include('api.urls')),
+    path('', include('accounts.urls')),
 ]
+urlpatterns += staticfiles_urlpatterns()

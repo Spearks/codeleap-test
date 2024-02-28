@@ -11,6 +11,8 @@ services:
       - main
 
   django:
+    environment:
+      MIGRATE: 'false'
     build: .
     networks: 
       - main
@@ -25,18 +27,5 @@ services:
       - main
     ports:
       - "5432:5432"
-  
-  swagger:
-    image: swaggerapi/swagger-ui
-    volumes:
-      - ./swagger.json:/swagger.json
-    environment:
-      PORT: 8080
-      BASEURL: "/"
-      SWAGGER_JSON: "/swagger.json"
-    networks: 
-      - main
-    logging:
-      driver: none 
 networks:
   main:
