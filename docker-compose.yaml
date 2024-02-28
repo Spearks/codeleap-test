@@ -23,9 +23,13 @@ services:
       POSTGRES_DB: codeleap
       POSTGRES_USER: codeleap
       POSTGRES_PASSWORD: codeleap
+    volumes:
+      - data:/var/lib/postgresql/data
     networks: 
       - main
     ports:
       - "5432:5432"
 networks:
   main:
+volumes:
+  data:
